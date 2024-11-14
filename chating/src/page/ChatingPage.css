@@ -1,0 +1,18 @@
+.chatingbox {
+    width: 400px;
+    height: 500px;
+    border : 1px solid black
+}
+
+.messagebar {
+    width: 350px;
+    height: 30px;
+    border: 1px solid black;
+}
+
+.sendbutton {
+    width: 50px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
