@@ -2,15 +2,16 @@ import { getChat, testApi } from "../api/GET"
 import { addChat } from "../api/POST"
 import "./ChatingPage.css"
 import {useRef,useEffect, useState} from "react"
-
+import userImg from "../asset/image/user.jpg"
 
 function ChatingPage() {
 
     const [messageList,setMessageList] = useState([])
+    const [user,setUser] = useState("맹구")
     const chatBoxRef = useRef(null)
 
     useEffect(() => {
-        getChat("A").then((response)=>{
+        getChat(user).then((response)=>{
             setMessageList(response)
             console.log(response)
         })
@@ -24,15 +25,31 @@ function ChatingPage() {
         }
     }, [messageList]); // messageList가 업데이트될 때마다 실행
     
+    function ChatingHeader() {
+        return(
+            <div className="chatingheader">
+                <h2 className="title">이루매 GPT</h2>
+            </div>
+        )
+    }
+
     function ChatingMain() {
 
         function MessageBox(props) {
             const content=[]
-            if(props.sender==="A"){
-                content.push(<h2 style={{textAlign:"right"}}> {props.content} : {props.sender} </h2>)
+            if(props.sender===user){
+                content.push(
+                    <div style={{display:"flex",flexDirection:"row",justifyContent:"flex-end"}}>
+                    <div className="sendermessage">
+                    <h2 className="sendercontent" style={{textAlign:"right"}}> {props.content} </h2>
+                    </div>  
+                    <div className="senderprofile" style={{display:"flex",flexDirection:"column",justifyContent:"flex-end"}}>
+                        <img src={userImg} width="30px" height="30px" alt="없음"></img>
+                    </div>
+                    </div>)
             }
             else{
-                content.push(<h2> {props.sender} : {props.content} </h2>)
+                content.push(<div className="receivermessage"><h2 className="receivercontent"> {props.content} </h2></div>)
             }
             return(
                 <div>
@@ -60,8 +77,8 @@ function ChatingPage() {
 
         function sendMessage(event){
             const data = {
-                "sender_name" : "A",
-                "receiver_name" : "B",
+                "sender_name" : user,
+                "receiver_name" : "이루매GPT",
                 "content" : message
             }
             addChat(data).then((response)=>{
@@ -73,15 +90,16 @@ function ChatingPage() {
         }
     
         return (
-            <div>
+            <div className="messagecomponent">
                 <input className="messagebar" type="text" onChange={(event)=>{changeHandler(event)}}></input>
-                <button className="sendbutton" onClick={(event)=>{sendMessage(event)}}>전송</button>
+                <button className="sendbutton" onClick={(event)=>{sendMessage(event)}}></button>
             </div>
         )
     }
 
     return(
-        <div>
+        <div className="chatingpage"> 
+            <ChatingHeader></ChatingHeader>
             <ChatingMain></ChatingMain>
             <MessageBar></MessageBar>
        </div>
