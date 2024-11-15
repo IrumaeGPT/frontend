@@ -47,6 +47,7 @@ def addChating(data):
     day_time = datetime.now(kst)
     
     random_content = str(random.randint(0,101010))
+    random_content = "안녕 나는 이루매 GPT야 잘 부탁해 오늘 밥은 맛있게 먹었니 친구야?"
     chating_info = [sender_name,receiver_name,content,day_time]
     chating_info_reverse = [receiver_name,sender_name,random_content,day_time
                             ] 
