@@ -7,7 +7,7 @@ import userImg from "../asset/image/irumae.jpeg"
 function ChatingPage() {
 
     const [messageList,setMessageList] = useState([])
-    const [user,setUser] = useState("고고")
+    const [user,setUser] = useState("홍길동")
     const chatBoxRef = useRef(null)
 
     useEffect(() => {
@@ -34,7 +34,6 @@ function ChatingPage() {
     }
 
     function ChatingMain() {
-
         function MessageBox(props) {
             const content=[]
             if(props.sender===user){
@@ -83,13 +82,20 @@ function ChatingPage() {
 
         function sendMessage(event){
             const data = {
-                "sender_name" : user,
-                "receiver_name" : "이루매 GPT",
-                "content" : message
+                "userId" : user,
+                "query" : message,
+                "isTest" : false
             }
+            setMessage("")
+            const waitMessage=[
+                {"sender_name":data.userId,"receive_name":"이루매GPT","content":message},
+                {"sender_name":"이루매GPT","receive_name":data.userId,"content":"....."}
+            ]
+            setMessageList([...messageList, ...waitMessage])
+
             addChat(data).then((response)=>{
                 console.log(response)
-                getChat(data.sender_name).then((response2)=>{
+                getChat(data.userId).then((response2)=>{
                     setMessageList(response2)
                 })
             })
@@ -102,9 +108,11 @@ function ChatingPage() {
         }
 
         return (
-            <div className="messagecomponent">
-                <input className="messagebar" onKeyDown={(event)=>{handleKeyDown(event)}} type="text" onChange={(event)=>{changeHandler(event)}}></input>
-                <button className="sendbutton" onClick={(event)=>{sendMessage(event)}}></button>
+            <div className="footer">
+                <div className="messagecomponent">
+                    <input className="messagebar" onKeyDown={(event)=>{handleKeyDown(event)}} type="text" onChange={(event)=>{changeHandler(event)}}></input>
+                    <button className="sendbutton" onClick={(event)=>{sendMessage(event)}}></button>
+                </div>
             </div>
         )
     }

@@ -7,7 +7,7 @@ export async function testApi() {
 }
 
 export async function getChat(name) {
-    const response = await axios.get("/api/get/chats/"+name)
+    const response = await axios.get("/get/chating/"+name)
     console.log(response.data)
     return response.data
 }
