@@ -1,0 +1,56 @@
+.containor{
+    width : 350px;
+    margin: auto auto;
+}
+
+.cotainorelement {
+    margin: 150px auto;
+}
+
+.loginheader {
+   margin: 50px auto;
+   text-align: center;
+   line-height: 34px;
+}
+
+.loginbox {
+    width: 350px;
+    margin: 15px auto;
+}
+
+.loginbar{
+    margin-left: 25px;
+}
+
+.loginbar input{
+    width: 300px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 0.5px solid gray;
+}
+
+.loginbar input:focus{
+   outline: none;
+}
+
+.loginbuttons {
+    margin: 10px auto;
+}
+
+.custombutton button {
+    width: 300px;
+    height: 35px;
+    margin-left: 25px;
+    margin-top: 15px;
+    border-radius: 13px;
+    border: 0.5px solid black;
+    box-sizing: border-box;
+    color: white; 
+}
+
+.searchidpassword h2{
+    margin : 15px auto;
+    font-size: 10px;
+    text-align: center;
+    text-decoration: underline;
+}
