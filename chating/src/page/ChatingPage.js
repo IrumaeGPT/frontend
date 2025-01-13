@@ -3,11 +3,13 @@ import { addChat } from "../api/POST"
 import "./ChatingPage.css"
 import {useRef,useEffect, useState} from "react"
 import userImg from "../asset/image/irumae.jpeg"
+import { ReactComponent as Exit } from '../asset/image/취소표시.svg'
+import { ReactComponent as Learning } from '../asset/image/학습.svg'
 
 function ChatingPage() {
 
     const [messageList,setMessageList] = useState([])
-    const [user,setUser] = useState("홍길동")
+    const [user,setUser] = useState("철수")
     const chatBoxRef = useRef(null)
 
     useEffect(() => {
@@ -28,7 +30,13 @@ function ChatingPage() {
     function ChatingHeader() {
         return(
             <div className="chatingheader">
-                <h2 className="title">이루매 GPT</h2>
+                <div>
+                    <Exit className="icon"></Exit>
+                    <h2 className="title">이루매 GPT</h2>
+                </div>
+                <div> 
+                    <Learning className="icon"></Learning>
+                </div>
             </div>
         )
     }
@@ -38,20 +46,19 @@ function ChatingPage() {
             const content=[]
             if(props.sender===user){
                 content.push(
-                    <div style={{display:"flex",flexDirection:"row",justifyContent:"flex-end", marginTop:"30px"}}>
+                    <div style={{display:"flex",flexDirection:"row",justifyContent:"flex-end", marginTop:"40px"}}>
                         <div className="sendermessage">
-                            <h2 className="sendercontent" style={{textAlign:"right"}}> {props.content} </h2>
+                            <h2 className="sendercontent"> {props.content} </h2>
                         </div>  
                     </div>)
             }
             else{
                 content.push(
-                <div style={{display:"flex", marginTop:"30px"}}>
+                <div style={{display:"flex",alignItems:"end", marginTop:"40px",marginLeft:"17px"}}>
                    
-                    <img className="receiverimg" src={userImg} alt="없음"></img>
+                    <div className="receiverimg" style={{width:"40px"}}></div>
                     
                     <div className="receivermessage">
-                        <h2 className="receivername">{props.sender}</h2>
                         <h2 className="receivercontent"> {props.content} </h2>
                     </div>
                 </div>)
@@ -108,10 +115,15 @@ function ChatingPage() {
         }
 
         return (
-            <div className="footer">
-                <div className="messagecomponent">
-                    <input className="messagebar" onKeyDown={(event)=>{handleKeyDown(event)}} type="text" onChange={(event)=>{changeHandler(event)}}></input>
-                    <button className="sendbutton" onClick={(event)=>{sendMessage(event)}}></button>
+            <div className="messagebarcomponent">
+                <div className="messagebar">
+                    <textarea placeholder="메시지 입력" onKeyDown={(event)=>{handleKeyDown(event)}} type="text" onChange={(event)=>{changeHandler(event)}}></textarea>
+                </div>
+                <div className="messagebaricon">
+                    <Learning className="icon" style={{fill:"#004094",marginLeft:"24px"}}></Learning>
+
+                    <button className="sendbutton"><h2>전송</h2></button>
+
                 </div>
             </div>
         )
