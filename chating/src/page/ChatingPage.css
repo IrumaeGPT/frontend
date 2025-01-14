@@ -156,6 +156,59 @@
     font-weight: 800;
     color: white;
 }
+
+.modalcontent{
+
+}
+
+.modalcontent h2{
+    font-size: 20px;
+}
+
+.modalcontent textarea{
+    width: 250px;
+    height: 200px;
+    border: none;
+    resize: none;
+    box-sizing: border-box;
+    border : 0.5px solid black;
+    margin-top:20px;
+    padding: 10px 10px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.modalcontent textarea::placeholder{
+    font-size: 12px;
+    font-weight: 400;
+    color: #AFAFAF;
+ }
+
+ .modalcontent button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 24px;
+    margin-top: 10px;
+    width: 50px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: lightgray;
+ }
+
+ .modalcontent button h4{
+    font-size: 11px;
+    font-weight: 800;
+    color: white;
+ }
+
+ .modalcontent button:hover{
+    background-color: #004094;
+ }
+
 @media (max-width: 480px) {
    
 
