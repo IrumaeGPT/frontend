@@ -26,7 +26,6 @@ function ChatingPage() {
     useEffect(() => {
         getChat(user).then((response)=>{
             setMessageList(response)
-            console.log(response)
         })
       },[]);
 
@@ -55,7 +54,6 @@ function ChatingPage() {
 
         addChat(data).then((response)=>{
             if(!isLearning){
-                console.log(response)
                 getChat(data.userId).then((response2)=>{
                     setMessageList(response2)
                 })
