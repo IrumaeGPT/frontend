@@ -11,7 +11,7 @@ import { use } from "react"
 function ChatingPage() {
 
     const [messageList,setMessageList] = useState([])
-    const [user,setUser] = useState("철수")
+    const [user,setUser] = useState("관리자1")
     const [isOpen, setIsOpen] = useState(false)
     const chatBoxRef = useRef(null)
 
